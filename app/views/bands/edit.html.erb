@@ -1,0 +1,8 @@
+<h2>Edit Band</h2>
+
+    <%= form_for @band do %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= label_tag :name, "Band name" %>
+        <%= text_field_tag :name %>
+        <%= submit_tag "Update Band" %>
+    <% end %>

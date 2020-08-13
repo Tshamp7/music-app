@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   root to: "sessions#new"
 
   resources :users
-  resources :bands
+
+  resources :bands do 
+    resources :albums
+  end
+
   resource :session
+  resources :albums, except: :new
 end

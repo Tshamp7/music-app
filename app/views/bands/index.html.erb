@@ -1,0 +1,9 @@
+<h2>All the bands!</h2>
+
+<ul>
+    <% @bands.each do |band| %>
+        <li><%=link_to "#{band.name}", band_path(band) %></li>
+    <% end %>
+</ul>
+
+<%= button_to "My Profile", user_path(current_user), method: :get %>
