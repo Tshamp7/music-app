@@ -19,6 +19,7 @@ class TracksController < ApplicationController
 
     def show
         @track = Track.find_by(id: params[:id])
+        @album = Album.find_by(id: @track.album_id)
         render 'show' 
     end
 
