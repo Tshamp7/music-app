@@ -1,0 +1,12 @@
+<h2>  All Albums 
+    <% unless @band.nil? %>
+        <%= by @band.name %>
+    <% end %> </h2>
+
+<% @albums.each do |album| %>
+<ul>
+    <li> <%= link_to "#{album.title}", album_path(album) %>  </li>
+</ul>
+<% end %>
+
+<%=  button_to "Bands Page", bands_path, method: :get %>

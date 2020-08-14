@@ -1,0 +1,29 @@
+<%= form_for @track do |f| %>
+
+    <%= f.label :title, "Track Title" %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :track_number, "Track Number: " %>
+    <%= f.select :track_number, (0..99).to_a %>
+    <br>
+    <%= f.label :albbum_id, "Album: " %>
+    <%= f.select :album_id, Album.all.map { |album| [ album.title, album.id ] }, prompt: "Select an Album", selected: "#{@album.try(:id)}" %>
+    <br>
+    <%= f.label :track_type, "Track Type: " %>
+
+    <%= f.radio_button :track_type, "Regular" %>
+    <%= f.label :track_type, "Regular", value: "Regular"%>
+    
+    <%= f.radio_button :track_type, "Bonus" %>
+    <%= f.label :track_type, "Bonus", value: "Bonus"%>
+    <br>
+    <%= f.label :lyrcis, "Lyrics (Optional): " %>
+    <br>
+    <%= f.text_area :lyrics, cols: 20, rows: 20 %>
+
+    <br>
+    <%= f.submit "Add Track to #{ @album.title }"%>
+
+
+
+<% end %>

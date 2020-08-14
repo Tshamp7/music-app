@@ -1,25 +1,2 @@
 <h2>Add an Album </h2>
-
-<%=  form_for @album do |f| %>
-
-    <%= f.label :title, "Album Title" %>
-    <%= f.text_field :title %>
-    <br>
-    <%= f.label :year, "Album Year: " %>
-    <%= f.text_field :year %>
-    <br>
-    <%= f.label :band_name, "Band Name: " %>
-    <%= f.select :band_name, @bands.map { |band| band.name }, prompt: "Select a Band", selected: "#{@band.name}" %>
-    <br>
-    <%= f.label :album_type, "Album Type: " %>
-
-    <%= f.radio_button :album_type, "Studio" %>
-    <%= f.label :album_type, "Studio", value: "Studio"%>
-    
-    <%= f.radio_button :album_type, "Live" %>
-    <%= f.label :album_type, "Live", value: "Live"%>
-    
-    <br>
-    <%= f.submit "Add Album"%>
-
-<% end %>
+<%= render 'form' %>

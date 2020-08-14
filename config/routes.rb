@@ -6,9 +6,13 @@ Rails.application.routes.draw do
   resources :users
 
   resources :bands do 
-    resources :albums
+    resources :albums, only: [:new, :index]
   end
 
   resource :session
-  resources :albums, except: :new
+  resources :albums do
+    resources :tracks, only: [:new, :index]
+  end
+
+  resources :tracks
 end

@@ -1,44 +1,59 @@
 class AlbumsController < ApplicationController
 
     def index
-        if params.has_key?(:band_id)
-            @albums = Album.where(band_id: params[:band_id])
-        else
-            @albums = Album.all
-        end
+        @albums = Album.all
+        render :index
+    end
+
+    def edit
+        @album = Album.find(params[:id])
+        @band = Band.find_by(id: @album.band_id)
+        render :edit
+    end
+
+    def update
+        @album = Album.find(params[:id])
+        @album.update(album_params)
+        redirect_to album_path(@album)
     end
 
     def show
         @album = Album.find(params[:id])
-        render album_path(@album)
+        @tracks = @album.tracks
+        @band = Band.find_by(id: @album.band_id)
+        render :show
     end
 
     def new
-        @bands = Band.all
-        @band = Band.find(params[:band_id])
-        @album = Album.new
+        @band = Band.find_by(id: params[:band_id])
+        @album = Album.new(band_id: params[:band_id])
+        render :new
     end
 
     def create
-        @band2 = @band
         @album = Album.new(album_params)
-     
         if @album.valid?
-            @album.band_id = Band.find_by(band_name: album_params[:album][:band_name]).id
+            puts @album.errors.full_messages
             @album.save
             flash[:success] = "Album created"
-            redirect_to albums_path
+            redirect_to album_path(@album)
         else
             puts @album.errors.full_messages
             flash.now[:alert] = "#{@album.errors.full_messages.to_sentence}"
-            redirect_to new_band_album_path(@band2)
+            render :new
         end
 
     end 
 
+    def destroy
+        album = Album.find(params[:id])
+        album.destroy
+        redirect_to albums_path
+    end
+
     private
         def album_params
-            params.require(:album).permit(:title, :year, :band_id, :album_type, :band_name, :created_at, :updated_atm, :album)
+            params.require(:album).permit(:title, :year, :band_id, :album_type, :created_at, :updated_at)
         end
 
 end
