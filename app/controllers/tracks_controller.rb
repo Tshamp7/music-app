@@ -2,6 +2,7 @@ class TracksController < ApplicationController
 
     def new
         @album = Album.find_by(id: params[:album_id])
+        @band_albums = Album.where(band_id: @album.band_id)
         @track = Track.new(album_id: params[:album_id])
     end
 

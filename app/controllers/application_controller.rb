@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     helper_method :current_user
+    helper_method :logged_in?
 
 
     def login!(user)
@@ -17,6 +18,14 @@ class ApplicationController < ActionController::Base
         @current_user ||= User.find_by(session_token: session[:session_token])
     end
 
+    def logged_in?
+        !current_user.nil?
+    end
 
+    private
+
+        def authenticate_user!
+            redirect_to :root unless current_user.try(:logged_in?)
+        end
 
 end

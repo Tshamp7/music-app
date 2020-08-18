@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-    attr_reader :password
-
+    attr_reader :password   
     
     validates :email, presence: true
     validates :password_digest, presence: {message: "Password can't be blank"}
@@ -40,5 +39,7 @@ class User < ApplicationRecord
         return nil if user.nil?
         user.is_password?(password) ? user : nil
     end
+
+  
 
 end

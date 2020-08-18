@@ -7,7 +7,7 @@
     <%= f.select :track_number, (0..99).to_a %>
     <br>
     <%= f.label :albbum_id, "Album: " %>
-    <%= f.select :album_id, Album.all.map { |album| [ album.title, album.id ] }, prompt: "Select an Album", selected: "#{@album.try(:id)}" %>
+    <%= f.select :album_id, @band_albums.map { |album| [ album.title, album.id ] }, prompt: "Select an Album", selected: "#{@album.try(:id)}" %>
     <br>
     <%= f.label :track_type, "Track Type: " %>
 
