@@ -1,23 +1,31 @@
 
-<h1>Log in!</h1>
+<div class="d-flex container justify-content-center">
+  <form action="/session" method="POST" class="d-flex form-signin align-items-center">
+  <div class="container">
+  <div class="row justify-content-center">
+    <h1 class="h3 mb-4 font-weight-normal text-align-center">Musiq</h1>
+  </div>
+   <h5 class="font-weight-normal text-align-center">Log In</h5>
+    <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>">
 
-<form action="/session" method="POST">
-  <input
-    type="hidden"
-    name="authenticity_token"
-    value="<%= form_authenticity_token %>">
+    <label for="user_email">Email</label>
+    <input type="text" name="user[email]" id="user_email" class='form-control'>
 
-  <label for="user_email">Email</label>
-  <input type="text" name="user[email]" id="user_email">
+    <br />
 
-  <br />
+    <label for="user_password">Password</label>
+    <input type="password" name="user[password]" id="user_password" class="form-control">
 
-  <label for="user_password">Password</label>
-  <input type="password" name="user[password]" id="user_password">
+    <br />
 
-  <br />
-
-  <input type="submit" value="Log in!">
-</form>
-<br>
-<%= button_to "Sign up", new_user_path, method: :get %>
+    <input type="submit" value="Log in" class="btn btn-outline-secondary">
+    
+  </form>
+  <br>
+  <br>
+  <%= button_to "Sign up", new_user_path, method: :get, class: "btn btn-outline-secondary"%>
+  </div>
+</div>

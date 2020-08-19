@@ -1,33 +1,44 @@
-<!-- app/views/users/new.html.erb -->
-<h1>Create User</h1>
+<!-- app/views/users/new.html.erb -->  
 
 <% action = (@user.persisted? ? user_url(@user) : users_url) %>
 <% method = (@user.persisted? ? "patch" : "post") %>
-<% message = (@user.persisted? ? "Update user" : "Create user") %>
+<% message = (@user.persisted? ? "Update Account" : "Create Account") %>
 
-<form action="<%= action %>" method="post">
-  <input
-     name="_method"
-     type="hidden"
-     value="<%= method %>">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
+<div class="d-flex container justify-content-center">
+   <form action="<%= action %>" method="post" class="d-flex form-signin align-items-center">
+   <div class="container">
+      <div class="row justify-content-center">
+      <h1 class="h3 mb-4 font-weight-normal text-align-center">Musiq</h1>
+      </div>
+      <br>
+      <input
+         name="_method"
+         type="hidden"
+         value="<%= method %>">
+      <input
+         name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>">
 
-  <label for="user_email">Email</label>
-  <input
-     id="user_email"
-     name="user[email]"
-     type="text">
-  <br>
+      <label for="user_email">Email</label>
+      <input
+         id="user_email"
+         name="user[email]"
+         type="text"
+         class="form-control"
+         >
+      <br>
 
-  <label for="user_password">Password</label>
-  <input
-     id="user_password"
-     name="user[password]"
-     type="password">
-  <br>
+      <label for="user_password">Password</label>
+      <input
+         id="user_password"
+         name="user[password]"
+         type="password"
+         class="form-control"
+         >
+      <br>
 
-  <input type="submit" value="<%= message %>">
-</form>
+      <input type="submit" class="btn btn-lg btn-outline-secondary btn-outline btn-block" value="<%= message %>">
+      </div>
+   </form>
+</div>
