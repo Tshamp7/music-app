@@ -40,6 +40,12 @@ class User < ApplicationRecord
         user.is_password?(password) ? user : nil
     end
 
+
+
+    
+
+
+
   
 
 end

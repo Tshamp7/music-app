@@ -18,14 +18,11 @@ class ApplicationController < ActionController::Base
         @current_user ||= User.find_by(session_token: session[:session_token])
     end
 
-    def logged_in?
-        !current_user.nil?
-    end
 
     private
 
         def authenticate_user!
-            redirect_to :root unless current_user.try(:logged_in?)
+            redirect_to :root unless !current_user.nil?
         end
 
 end

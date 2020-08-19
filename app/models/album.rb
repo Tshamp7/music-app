@@ -1,6 +1,4 @@
 class Album < ApplicationRecord
-    
-    before_action :authenticate_user!
 
     validates :title, presence: true
     validates :year, presence: true

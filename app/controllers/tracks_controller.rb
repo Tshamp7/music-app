@@ -1,4 +1,6 @@
 class TracksController < ApplicationController
+    before_action :authenticate_user!
+
 
     def new
         @album = Album.find_by(id: params[:album_id])
