@@ -1,11 +1,22 @@
-<h2>All the bands!</h2>
-
-<ul>
-    <% @bands.each do |band| %>
-        <li><%=link_to "#{band.name}", band_path(band) %></li>
-    <% end %>
-</ul>
-
-<%= button_to "My Profile", user_path(current_user), method: :get %>
 <br>
-<%= button_to "Add a Band", new_band_path, method: :get %>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>All the bands!</h2>
+        </div>
+
+        <div class="card-body">
+            <ul>
+                <% @bands.each do |band| %>
+                    <li><%=link_to "#{band.name}", band_path(band) %></li>
+                <% end %>
+            </ul>
+
+
+            <%= button_to "My Profile", user_path(current_user), method: :get %>
+            <br>
+            <%= button_to "Add a Band", new_band_path, method: :get %>
+        </div>
+    </div>
+
+</div>

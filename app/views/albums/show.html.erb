@@ -1,22 +1,37 @@
-<h2>Album page for <%= @album.title %></h2>
+<br>
+<div class="container">
+<div class="card">
+    <div class="card-header">
+        <h2>Album page for <%= @album.title %></h2>
+    </div>
 
-<h3>Band: <%= @band.name %> </h3>
-<h3>Release Year: <%= @album.year %></h3>
-<h3>Album Type: <%= @album.album_type %>  </h3>
-<br>
-<h2>  Tracks: </h2>
-<% @tracks.each do |track| %>
-    <ul>
-        <li><%= link_to "#{track.title}", track_path(track) %></li>
-    </ul>
-<% end %>
-<br>
-<%= button_to "Add Track", new_album_track_path(@album), method: :get %>
-<br>
-<%= button_to "All Albums", albums_path, method: :get %>
-<br>
-<%= button_to "Back to Band Page", band_path(@band), method: :get %>
-<br>
-<%= button_to "Delete", album_path(@album), method: :delete, data: { confirm: "Are you sure you want to delete this?" } %>
-<br>
-<%= button_to "Edit", edit_album_path(@album), method: :get %>
+        <div class="card-body">
+            <h3>Band: <%= @band.name %> </h3>
+            <h3>Release Year: <%= @album.year %></h3>
+            <h3>Album Type: <%= @album.album_type %>  </h3>
+            <br>
+            <div class="card">
+                <div class="card-header">
+                    <h2>  Tracks: </h2>
+                </div>
+                <div class="card-body">
+                        <% @tracks.each do |track| %>
+                            <ul>
+                                <li><%= link_to "#{track.title}", track_path(track) %></li>
+                            </ul>
+                        <% end %>
+                </div>
+            </div>
+            <br>
+            <%= button_to "Add Track", new_album_track_path(@album), method: :get, class: "btn btn-sm btn-outline-secondary" %>
+            <br>
+            <%= button_to "All Albums", albums_path, method: :get, class: "btn btn-sm btn-outline-secondary" %>
+            <br>
+            <%= button_to "Back to Band Page", band_path(@band), method: :get, class: "btn btn-sm btn-outline-secondary" %>
+            <br>
+            <%= button_to "Delete", album_path(@album), method: :delete, class: "btn btn-sm btn-outline-secondary", data: { confirm: "Are you sure you want to delete this?" } %>
+            <br>
+            <%= button_to "Edit", edit_album_path(@album), method: :get, class: "btn btn-sm btn-outline-secondary" %>
+        </div>
+    </div>
+</div>
