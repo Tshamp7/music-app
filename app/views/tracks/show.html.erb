@@ -1,10 +1,21 @@
-<h3>  Track info for <%= @track.title %></h3>
-<p> Album: <%= @album.title %> </p>
-<p> Track Number: <%= @track.track_number %> </p>
-<% unless @track.lyrics.nil? %>
-  <%= @track.lyrics %>
-<% end %>
-<br>
-<%= button_to "Back to Album", album_path(@album), method: :get %>
-<%= button_to "Delete", track_path(@track), method: :delete, data: { confirm: "Are you sure you want to delete this?" } %>
-<%= button_to "Edit Track", track_path(@track), method: :get %>
+<br>  
+<div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h3>  Track info for <%= @track.title %></h3>
+    </div>
+    <div class="card-body">
+      <p> Album: <%= @album.title %> </p>
+      <p> Track Number: <%= @track.track_number %> </p>
+      <% unless @track.lyrics.nil? %>
+        <p> Lyrics: <%= @track.lyrics %> </p>
+      <% end %>
+      <br>
+      <%= button_to "Back to Album", album_path(@album), method: :get, class: "btn btn-sm btn-outline-secondary" %>
+      <br>
+      <%= button_to "Delete", track_path(@track), method: :delete, class: "btn btn-sm btn-outline-secondary", data: { confirm: "Are you sure you want to delete this?" } %>
+      <br>
+      <%= button_to "Edit Track", edit_track_path(@track), method: :get, class: "btn btn-sm btn-outline-secondary" %>
+    </div>
+  </div>
+</div>

@@ -28,6 +28,8 @@ class TracksController < ApplicationController
 
     def edit
         @track = Track.find_by(id: params[:id])
+        @album = Album.find_by(id: @track.album_id)
+        @band_albums = Album.where(band_id: @album.band_id)
         render 'edit'
     end
 

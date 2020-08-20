@@ -1,2 +1,11 @@
-<h2> Edit <%= @album.title %> </h2>
-<%= render 'form' %>
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2> Edit <%= @album.title %> </h2>
+        </div>
+        <div class="card-body">
+            <%= render 'form' %>
+            <%= button_to "Back to Album", album_path(@album), method: :get, class: "btn btn-sm btn-outline-secondary" %>
+        </div>
+    </div>
+</div>
